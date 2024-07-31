@@ -1,32 +1,11 @@
-/**
- *
- * Manipulating the DOM exercise.
- * Exercise programmatically builds navigation,
- * scrolls to anchors from navigation,
- * and highlights section in viewport upon scrolling.
- *
- * Dependencies: None
- *
- * JS Version: ES2015/ES6
- *
- * JS Standard: ESlint
- *
-*/
-
-/**
- * Comments should be present at the beginning of each procedure and class.
- * Great to have comments before crucial code sections within the procedure.
-*/
-
 //Add new Section - Section 4
-// / Tạo một phần tử < section > mới
 const newSection = document.createElement('section');
 newSection.id = 'section4';
 
-// Thêm thuộc tính data-nav cho phần tử mới
+// Add the new "data-nav" attribute for the new section
 newSection.setAttribute('data-nav', 'Section 4');
 
-// Tạo nội dung cho phần tử mới
+// Create new content for the new section
 newSection.innerHTML = `
         <div class="landing__container">
             <h2>Section 4</h2>
@@ -35,14 +14,12 @@ newSection.innerHTML = `
         </div>
     `;
 
-// Thêm phần tử mới vào cuối danh sách con của phần tử mẹ
+// Add the new section after section 3
 const sect3 = document.getElementById('section3');
 sect3.insertAdjacentElement('afterend', newSection);
 
 /**
  * Define Global Variables
- *
- *
 */
 const navList = document.querySelector('#navbar__list');
 const sections = document.querySelectorAll('section');
@@ -52,19 +29,6 @@ let count = 1;
 const header = document.querySelector('header')
 let isScrolling = false;
 let scrollTimeOut;
-
-/**
- * End Global Variables
- * Start Helper Functions
- *
-*/
-
-
-/**
- * End Helper Functions
- * Begin Main Functions
- *
-*/
 
 // build the nav
 sections.forEach(section => {
@@ -78,9 +42,10 @@ sections.forEach(section => {
     fragNav.appendChild(item);
 });
 navList.appendChild(fragNav);
+
+
 // Add class 'active' to section when near top of viewport
 const value = 150;
-let curSection;
 const links = document.querySelectorAll('.menu__link');
 let curLink;
 function makeActive() {
@@ -123,7 +88,7 @@ function hidingNavBar() {
 }
 
 // Scroll to anchor ID using scrollTO event
-function srcollFunc(event) {
+function scrollFunc(event) {
     const target = event.target;
     if (target.nodeName === 'A') {
         event.preventDefault();
@@ -133,7 +98,7 @@ function srcollFunc(event) {
     }
 }
 
-navList.addEventListener('click', srcollFunc);
+navList.addEventListener('click', scrollFunc);
 
 
 
@@ -141,13 +106,7 @@ document.addEventListener('scroll', () => {
     hidingNavBar();
     makeActive();
 })
-/**
- * End Main Functions
- * Begin Events
- *
-*/
 
-// Build menu 
 
 // Scroll to section on link click
 const fragButton = document.createDocumentFragment();
@@ -161,6 +120,6 @@ buttonScroll.addEventListener('click', () => {
         behavior: 'smooth'
     });
 })
-// Set sections as active
+
 
 
