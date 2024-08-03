@@ -1,5 +1,7 @@
 //Add new Section - Section 4
 const newSection = document.createElement('section');
+const mainSec = document.querySelector('main');
+
 newSection.id = 'section4';
 
 // Add the new "data-nav" attribute for the new section
@@ -15,8 +17,7 @@ newSection.innerHTML = `
     `;
 
 // Add the new section after section 3
-const sect3 = document.getElementById('section3');
-sect3.insertAdjacentElement('afterend', newSection);
+mainSec.insertAdjacentElement('beforeend', newSection);
 
 /**
  * Define Global Variables
